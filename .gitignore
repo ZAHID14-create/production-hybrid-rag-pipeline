@@ -1,0 +1,104 @@
+# ==============================================================================
+# Git Ignore Configuration - Production Hybrid RAG Pipeline
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Environment Variables & Secret Credentials (NEVER COMMIT)
+# ------------------------------------------------------------------------------
+.env
+*.env
+*.env.*
+!.env.example
+backend/.env
+
+# ------------------------------------------------------------------------------
+# 2. Python Virtual Environments
+# ------------------------------------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+backend/.venv/
+env.bak/
+venv.bak/
+
+# ------------------------------------------------------------------------------
+# 3. Python Cache, Bytecode & Testing Artifacts
+# ------------------------------------------------------------------------------
+__pycache__/
+*/__pycache__/
+*/*/__pycache__/
+*/*/*/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+
+# ------------------------------------------------------------------------------
+# 4. Logs & Process Output
+# ------------------------------------------------------------------------------
+*.log
+uvicorn_err.log
+uvicorn_out.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ------------------------------------------------------------------------------
+# 5. Node.js & Frontend Build Outputs
+# ------------------------------------------------------------------------------
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+.npm
+.vite/
+frontend/.vite/
+
+# ------------------------------------------------------------------------------
+# 6. Vector Database & BM25 Retrieval Indices (Recreatable Local Stores)
+# ------------------------------------------------------------------------------
+data/chroma_db/
+data/bm25_index/
+**/chroma_db/**
+**/bm25_index/**
+*.chroma
+*.parquet
+*.sqlite3
+
+# ------------------------------------------------------------------------------
+# 7. Uploaded Documents & Extracted Chunks (Private User Data)
+# ------------------------------------------------------------------------------
+documents/*
+!documents/.gitkeep
+documents/.tmp_*
+*.tmp
+*.temp
+
+# Processed user document JSON extractions
+data/processed_documents/*
+!data/processed_documents/.gitkeep
+
+# ------------------------------------------------------------------------------
+# 8. Runtime Evaluation Output & Cached Runs (Preserve ground-truth benchmark dataset)
+# ------------------------------------------------------------------------------
+data/evaluation/latest_report.json
+data/evaluation/cached_answers.json
+data/evaluation/expanded_corpus_test_results.json
+
+# ------------------------------------------------------------------------------
+# 9. IDE, OS & Temporary Files
+# ------------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+scratch/
